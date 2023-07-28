@@ -1,11 +1,13 @@
 import express, { Request, Response } from "express";
 import color from "./helpers/color.ts";
-import apiRouter from "./routers/api.ts";
+import statsRouter from "./routers/stats.ts";
+import { consoleLogger } from "./helpers/middleware.ts";
 
 const app = express();
 const port = 3000;
 
-app.use("/stats", apiRouter);
+app.use("/stats", statsRouter);
+app.use(consoleLogger);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello, World!");
