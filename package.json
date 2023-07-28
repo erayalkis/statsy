@@ -1,0 +1,14 @@
+{
+  "name": "statsy",
+  "version": "0.0.1",
+  "description": "An Express.js REST API for monitoring and logging your PC resource usages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eray Alkış",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
