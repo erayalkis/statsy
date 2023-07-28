@@ -1,4 +1,4 @@
-import color from "./color";
+import color from "./color.ts";
 
 const clog = console.log;
 
@@ -9,4 +9,6 @@ export default {
   errorBright: (str: string) => clog(color.errorBright(str)),
   warn: (str: string) => clog(color.warn(str)),
   warnBright: (str: string) => clog(color.warnBright(str)),
+  debug: (str: string) => clog(color.debug(str)),
+  debugBright: (str: string) => clog(color.debugBright(str)),
 };
