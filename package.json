@@ -2,10 +2,11 @@
   "name": "statsy",
   "version": "0.0.1",
   "description": "An Express.js REST API for monitoring and logging your PC resource usages.",
-  "main": "index.js",
+  "main": "./src/index",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node ./src/index.js"
+    "dev": "ts-node ./src/index.ts"
   },
   "author": "Eray Alkış",
   "license": "ISC",
