@@ -4,7 +4,8 @@
   "description": "An Express.js REST API for monitoring and logging your PC resource usages.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node ./src/index.js"
   },
   "author": "Eray Alkış",
   "license": "ISC",
