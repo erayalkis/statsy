@@ -1,6 +1,5 @@
 import { PathLike, existsSync, mkdir, writeFile } from "fs";
-
-const LOGSDIR: PathLike = "./logs";
+import { LOGSDIR } from "./constants.ts";
 
 export const createLogsFolderIfNotExists = () => {
   if (!existsSync(LOGSDIR)) {
@@ -9,7 +8,7 @@ export const createLogsFolderIfNotExists = () => {
 };
 
 export const createLogFile = (fileDir: PathLike) => {
-  const fullpath = LOGSDIR + fileDir;
+  const fullpath = LOGSDIR.toString() + fileDir;
   if (!existsSync(fullpath)) {
     writeFile(fullpath, "", () => {});
   }
