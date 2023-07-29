@@ -11,7 +11,7 @@ const port = 3000;
 ensureLogFilesExists();
 
 setInterval(() => {
-  logStats(true, true);
+  logStats(false, false);
 }, 1000);
 
 app.use("/stats", statsRouter);
