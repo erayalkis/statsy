@@ -1,5 +1,7 @@
 import os from "os";
 import console from "./console.ts";
+import { writeFile } from "fs";
+import { USAGELOGSDIR } from "./constants.ts";
 
 const stats = {
   memFree: () => os.freemem(),
@@ -9,10 +11,13 @@ const stats = {
   uptime: () => os.uptime(),
 };
 
-export const logStats = () => {
-  console.debugBright(
-    `[USAGE STATISTICS]: CPU: ${stats.loadAvg()} MEMFREE: ${stats.memFree()} MEMTOTAL: ${stats.memTotal()} UPTIME: ${stats.uptime()}`
-  );
+export const logStats = (logToConsole: boolean, logToFile: boolean) => {
+  const logText = `[USAGE STATISTICS]: CPU: ${stats.loadAvg()} MEMFREE: ${stats.memFree()} MEMTOTAL: ${stats.memTotal()} UPTIME: ${stats.uptime()}\n`;
+  if (logToConsole) console.debugBright(logText);
+
+  if (logToFile) {
+    writeFile(USAGELOGSDIR, logText, { flag: "a" }, () => {});
+  }
 };
 
 export default stats;
