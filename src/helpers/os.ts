@@ -12,7 +12,7 @@ const stats = {
 };
 
 export const logStats = (logToConsole: boolean, logToFile: boolean) => {
-  const logText = `[USAGE STATISTICS]: CPU: ${stats.loadAvg()} MEMFREE: ${stats.memFree()} MEMTOTAL: ${stats.memTotal()} UPTIME: ${stats.uptime()}\n`;
+  const logText = `[USAGE STATISTICS]: CPU: ${stats.loadAvg()} MEMFREE: ${stats.memFree()} MEMTOTAL: ${stats.memTotal()} UPTIME: ${stats.uptime()} TIME: ${new Date().toISOString()}\n`;
   if (logToConsole) console.debugBright(logText);
 
   if (logToFile) {
