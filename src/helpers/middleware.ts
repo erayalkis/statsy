@@ -6,5 +6,10 @@ export const consoleLogger = (
   res: Response,
   next: NextFunction
 ) => {
-  console.debugBright(`Received request from ${req.ip}`);
+  console.debugBright(
+    `[SERVER] ${new Date().toISOString()} | ${res.statusCode} | [${
+      req.method
+    }] | ${req.path}`
+  );
+  next();
 };
