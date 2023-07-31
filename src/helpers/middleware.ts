@@ -1,7 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 import console from "./console.ts";
 import { writeFile } from "fs";
-import { CONSOLELOGSDIR } from "./constants.ts";
+import {
+  CONSOLELOGSDIR,
+  SHOULD_LOG_REQUESTS_TO_CONSOLE,
+  SHOULD_LOG_REQUESTS_TO_FILE,
+} from "./constants.ts";
 
 export const consoleLogger = (
   req: Request,
@@ -12,7 +16,10 @@ export const consoleLogger = (
     res.statusCode
   } | [${req.method}] | ${req.path}`;
 
-  console.debugBright(logText);
-  writeFile(CONSOLELOGSDIR, logText + "\n", { flag: "a" }, () => {});
+  if (SHOULD_LOG_REQUESTS_TO_CONSOLE) console.debugBright(logText);
+
+  if (SHOULD_LOG_REQUESTS_TO_FILE)
+    writeFile(CONSOLELOGSDIR, logText + "\n", { flag: "a" }, () => {});
+
   next();
 };
