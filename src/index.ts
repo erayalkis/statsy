@@ -7,6 +7,7 @@ import { ensureLogFilesExists } from "./helpers/startup.ts";
 import {
   SHOULD_LOG_USAGE_TO_CONSOLE,
   SHOULD_LOG_USAGE_TO_FILE,
+  DIR_NAME,
 } from "./helpers/constants.ts";
 import path from "path";
 
@@ -21,12 +22,12 @@ if (SHOULD_LOG_USAGE_TO_CONSOLE || SHOULD_LOG_USAGE_TO_FILE) {
   }, 1000);
 }
 
+app.use("/public", express.static(path.join(DIR_NAME, "public")));
 app.use("/stats", statsRouter);
 app.use(consoleLogger);
 
 app.get("/", (req: Request, res: Response) => {
-  const dirname = path.resolve();
-  res.sendFile(path.join(dirname, "/public/html/index.html"));
+  res.sendFile(path.join(DIR_NAME, "/public/html/index.html"));
 });
 
 app.listen(port, () => {
