@@ -8,6 +8,7 @@ import {
   SHOULD_LOG_USAGE_TO_CONSOLE,
   SHOULD_LOG_USAGE_TO_FILE,
 } from "./helpers/constants.ts";
+import path from "path";
 
 const app = express();
 const port = 3000;
@@ -24,7 +25,8 @@ app.use("/stats", statsRouter);
 app.use(consoleLogger);
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Hello, World!");
+  const dirname = path.resolve();
+  res.sendFile(path.join(dirname, "/public/html/index.html"));
 });
 
 app.listen(port, () => {
