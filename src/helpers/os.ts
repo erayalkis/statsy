@@ -1,7 +1,9 @@
 import os from "os";
-import console from "./console.ts";
+// @ts-ignore
+import console from "./console.js";
 import { writeFile } from "fs";
-import { USAGELOGSDIR } from "./constants.ts";
+// @ts-ignore
+import { USAGELOGSDIR } from "./constants.js";
 
 const stats = {
   memFree: () => os.freemem(),

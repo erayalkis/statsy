@@ -1,5 +1,6 @@
 import { PathLike, existsSync, mkdir, writeFile } from "fs";
-import { LOGSDIR } from "./constants.ts";
+// @ts-ignore
+import { LOGSDIR } from "./constants.js";
 
 export const createLogsFolderIfNotExists = () => {
   if (!existsSync(LOGSDIR)) {

@@ -1,6 +1,8 @@
 import express, { Request, Response } from "express";
-import os from "../helpers/os.ts";
-import { getValFromFuncs } from "../helpers/router.ts";
+// @ts-ignore
+import os from "../helpers/os.js";
+// @ts-ignore
+import { getValFromFuncs } from "../helpers/router.js";
 
 const router = express.Router();
 

@@ -1,11 +1,13 @@
 import { NextFunction, Request, Response } from "express";
-import console from "./console.ts";
+// @ts-ignore
+import console from "./console.js";
 import { writeFile } from "fs";
 import {
   CONSOLELOGSDIR,
   SHOULD_LOG_REQUESTS_TO_CONSOLE,
   SHOULD_LOG_REQUESTS_TO_FILE,
-} from "./constants.ts";
+  // @ts-ignore
+} from "./constants.js";
 
 export const consoleLogger = (
   req: Request,

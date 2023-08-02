@@ -1,14 +1,20 @@
 import express, { Request, Response } from "express";
-import color from "./helpers/color.ts";
-import statsRouter from "./routers/stats.ts";
-import { consoleLogger } from "./helpers/middleware.ts";
-import { logStats } from "./helpers/os.ts";
-import { ensureLogFilesExists } from "./helpers/startup.ts";
+// @ts-ignore
+import color from "./helpers/color.js";
+// @ts-ignore
+import statsRouter from "./routers/stats.js";
+// @ts-ignore
+import { consoleLogger } from "./helpers/middleware.js";
+// @ts-ignore
+import { logStats } from "./helpers/os.js";
+// @ts-ignore
+import { ensureLogFilesExists } from "./helpers/startup.js";
 import {
   SHOULD_LOG_USAGE_TO_CONSOLE,
   SHOULD_LOG_USAGE_TO_FILE,
   DIR_NAME,
-} from "./helpers/constants.ts";
+  // @ts-ignore
+} from "./helpers/constants.js";
 import path from "path";
 
 const app = express();

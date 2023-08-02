@@ -1,5 +1,6 @@
 import { existsSync, mkdir, writeFile } from "fs";
-import { CONSOLELOGSDIR, LOGSDIR, USAGELOGSDIR } from "./constants.ts";
+// @ts-ignore
+import { CONSOLELOGSDIR, LOGSDIR, USAGELOGSDIR } from "./constants.js";
 
 export const ensureLogFilesExists = () => {
   if (!existsSync(LOGSDIR)) {
