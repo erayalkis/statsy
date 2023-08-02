@@ -15,6 +15,17 @@ router.get("/memory", (req: Request, res: Response) => {
   res.send({ memFree: memFree(), memTotal: memTotal() });
 });
 
+router.get("/memfree", (req: Request, res: Response) => {
+  const { memFree } = os;
+
+  res.send({ memFree: memFree() });
+});
+
+router.get("/memtotal", (req: Request, res: Response) => {
+  const { memTotal } = os;
+  res.send({ memTotal: memTotal() });
+});
+
 router.get("/cpus", (req: Request, res: Response) => {
   const { cpus } = os;
 
