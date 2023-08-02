@@ -1,12 +1,15 @@
-FROM node-18:alpine
-ENV NODE_ENV=production
+FROM node:lts-alpine
 
-WORKDIR /app
+WORKDIR /usr/app
 
-COPY ["package.json", "package-lock.json", "./"]
+COPY ["package*.json", "./"]
 
-RUN npm install --production
+RUN npm install
 
 COPY . .
 
-CMD ["npm", "run dev"]
+EXPOSE 3000
+
+RUN npm run ts-build
+
+CMD ["node", "dist/index.js"]
