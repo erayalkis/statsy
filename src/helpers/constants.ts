@@ -3,7 +3,7 @@ import path from "path";
 
 export const LOGSDIR: PathLike = "./logs";
 export const USAGELOGSDIR = LOGSDIR + "/usage.txt";
-export const CONSOLELOGSDIR = LOGSDIR + "/console.txt";
+export const REQUESTLOGSDIR = LOGSDIR + "/requests.txt";
 export const SHOULD_LOG_USAGE_TO_FILE =
   process.env["LOG_USAGE_TO_FILE"] !== undefined;
 export const SHOULD_LOG_USAGE_TO_CONSOLE =

@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from "express";
 import console from "./console.js";
 import { writeFile } from "fs";
 import {
-  CONSOLELOGSDIR,
+  REQUESTLOGSDIR,
   SHOULD_LOG_REQUESTS_TO_CONSOLE,
   SHOULD_LOG_REQUESTS_TO_FILE,
   // @ts-ignore
@@ -21,7 +21,7 @@ export const consoleLogger = (
   if (SHOULD_LOG_REQUESTS_TO_CONSOLE) console.debugBright(logText);
 
   if (SHOULD_LOG_REQUESTS_TO_FILE)
-    writeFile(CONSOLELOGSDIR, logText + "\n", { flag: "a" }, () => {});
+    writeFile(REQUESTLOGSDIR, logText + "\n", { flag: "a" }, () => {});
 
   next();
 };
