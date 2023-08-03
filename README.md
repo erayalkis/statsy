@@ -98,8 +98,6 @@ To get a local copy up and running follow these simple example steps:
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-
 - npm
   ```sh
   npm install npm@latest -g
@@ -107,21 +105,34 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone git@github.com:erayalkis/statsy.git
    ```
-3. Install NPM packages
-   ```sh
+
+#### With Docker:
+
+1. Build Docker Image
+   ```
+   ./setup_docker.sh
+   ```
+2. Run Docker Container
+   ```
+   docker run -p 3000:3000 --name=statsy erayalkis/statsy
+   ```
+3. Done!
+
+#### Without Docker:
+
+1. Install npm packages
+   ```
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = "ENTER YOUR API";
+2. Run server
    ```
+   npm run dev
+   ```
+3. Done!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -141,21 +152,26 @@ You can visit these routes to get a JSON response:
   - /loadavg: Returns an array of load averages.
   - /uptime: Returns the uptime of the host computer.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Statsy's logging features are all toggleable through command line arguments:
 
-<!-- ROADMAP -->
+- LOG_USAGE_TO_FILE: Enables logging host machine stats to logs/usage.txt.
+- LOG_USAGE_TO_CONSOLE: Enables logging host machine stats to the console. (This will clutter up your console a lot, use with caution)
+- LOG_REQUESTS_TO_FILE: Enables logging server requests to logs/requests.txt.
+- LOG_REQUESTS_TO_CONSOLE: Enables logging server requests to the console.
 
-## Roadmap
+### Command line arg examples:
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-  - [ ] Chinese
-  - [ ] Spanish
+To enable logging requests to the console, and logging usage stats to a file, you can run:
 
-See the [open issues](https://github.com/erayalkis/statsy/issues) for a full list of proposed features (and known issues).
+```
+  LOG_REQUESTS_TO_CONSOLE=true LOG_USAGE_TO_FILE=tru npm run dev
+```
+
+And with Docker, you can run:
+
+```
+docker run -p 3000:3000 --name=statsy -e LOG_REQUEST_TO_CONSOLE=true -e LOG_USAGE_TO_FILE=true erayalkis/statsy
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
