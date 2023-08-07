@@ -19,6 +19,7 @@ import path from "path";
 
 const app = express();
 const port = 3000;
+const deps = ["chart.js"];
 
 ensureLogFilesExists();
 
@@ -31,6 +32,10 @@ if (SHOULD_LOG_USAGE_TO_CONSOLE || SHOULD_LOG_USAGE_TO_FILE) {
 app.use("/public", express.static(path.join(DIR_NAME, "public")));
 app.use("/stats", statsRouter);
 app.use(consoleLogger);
+
+deps.forEach((dep) => {
+  app.use(`/${dep}`, express.static(path.resolve(`node_modules/${dep}`)));
+});
 
 app.get("/", (req: Request, res: Response) => {
   res.sendFile(path.join(DIR_NAME, "/public/html/index.html"));
