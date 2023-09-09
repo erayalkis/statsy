@@ -6,6 +6,10 @@
         label: "Available Memory",
         data: [],
       },
+      {
+        label: "Used Memory",
+        data: [],
+      },
     ],
   };
 
@@ -49,8 +53,12 @@
     const json = await res.json();
 
     const currTime = new Date().toLocaleTimeString();
+    const freeMemory = json.memFree;
+    const totalMemory = json.memTotal;
+    const usedMemory = totalMemory - freeMemory;
 
-    chart.data.datasets[0].data.push(json.memFree);
+    chart.data.datasets[0].data.push(freeMemory);
+    chart.data.datasets[1].data.push(usedMemory);
     chart2.data.datasets[0].data.push(json.loadAvg[0]);
     chart2.data.datasets[1].data.push(json.loadAvg[1]);
     chart2.data.datasets[2].data.push(json.loadAvg[2]);
@@ -60,5 +68,5 @@
     console.log(chart.data);
     chart.update();
     chart2.update();
-  }, 1000);
+  }, 2000);
 })();
