@@ -4,6 +4,7 @@ import console from "./console.js";
 import { writeFile } from "fs";
 // @ts-ignore
 import { USAGELOGSDIR } from "./constants.js";
+import { cpuTemperature } from "systeminformation"
 
 const stats = {
   memFree: () => os.freemem(),
@@ -14,7 +15,7 @@ const stats = {
 };
 
 export const logStats = (logToConsole: boolean, logToFile: boolean) => {
-  const logText = `[USAGE STATISTICS]: CPU: ${stats.loadAvg()} MEMFREE: ${stats.memFree()} MEMTOTAL: ${stats.memTotal()} UPTIME: ${stats.uptime()} TIME: ${new Date().toISOString()}`;
+  const logText = `[USAGE STATISTICS]-[${new Date().toISOString()}] CPU: ${stats.loadAvg()} MEMFREE: ${stats.memFree()} MEMTOTAL: ${stats.memTotal()} UPTIME: ${stats.uptime()} `;
   if (logToConsole) console.debugBright(logText);
 
   if (logToFile) {
